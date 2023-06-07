@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="width: 200%;">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink="/equipes">Equipes</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/equipes/stat">Stats</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/equipes/favorites">My favorites</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/equipes/stade">New Stade</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/equipes/listStatds">List stades</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    </nav> 
+    <br><br>
+    <div class="container ">
+      <form class="form-group " [formGroup]="form" (ngSubmit)="add()">
+
+        <div class="form-group " >
+            <label >name:*</label>
+            <input type="text" formControlName="name" name="name" [(ngModel)]="stade.nomStade" class="form-control">
+            <div class="alert alert-danger" *ngIf="form.controls['name'].invalid">
+                <p *ngIf="form.controls['name'].hasError('required')">name is required</p>
+                <p *ngIf="form.controls['name'].hasError('name')">name invalid</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>stade photo</label>
+            <input type="text" formControlName="photo" name="photo" [(ngModel)]="stade.imageStade" class="form-control">
+            <div class="alert alert-danger" *ngIf="form.controls['photo'].invalid">
+                <p *ngIf="form.controls['photo'].hasError('required')">photo is required</p>
+                <p *ngIf="form.controls['photo'].hasError('photo')">name invalid</p>
+            </div>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-sm btn-success" [disabled]="form.invalid">
+            add
+        </button>
+        &nbsp;
+        <button type="reset" class="btn btn-sm btn-warning">
+            reset
+        </button>
+    </form>
+
+
+    </div>
+   

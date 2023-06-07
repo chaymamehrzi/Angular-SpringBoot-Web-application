@@ -1,0 +1,106 @@
+
+<div class="size">
+
+<br><br><br><br><br>
+<h1>List of departments</h1>
+
+<p-table #dt [value]="listDepartments" dataKey="id" styleClass="p-datatable-customers" [rowHover]="true"
+            [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]"   [loading]="loading"
+            [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+            [filterDelay]="0" [globalFilterFields]="['idDepart','nomDepart']">
+            <ng-template pTemplate="caption">
+                <div class="table-header">
+                    <span class="p-input-icon-left">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text"  (input)="applyFilterGlobal($event, 'contains')"  placeholder="Global Search" />
+                    </span>
+                    <span class="p-input-right">
+                      <button pButton style="float: right;" type="button" label="Add" icon="pi pi-check" class="p-button-primary"
+                      (click)="openDepartment()"></button>
+                    </span>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+              <tr>
+                <th scope="col" pSortableColumn="id">department id <p-sortIcon field="id"></p-sortIcon></th>
+                <th scope="col" pSortableColumn="name">department Name <p-sortIcon field="name"></p-sortIcon></th>
+                <th scope="col" pSortableColumn="action">Action <p-sortIcon field="action"></p-sortIcon></th>
+              </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-item>
+                <tr>
+                  <td>{{item.idDepart }}</td>
+                  <td>{{item.nomDepart }}</td>
+                  <td>
+                    <button pButton type="button" label="Edit" icon="pi pi-check" class="p-button-primary"  (mouseover)="hoveEdit=true" (mouseleave)="hoveEdit=false" [ngStyle]="{color: hoveEdit==true  ? 'white' : 'black' }" (click)="showBasicDialog(item)"></button>
+                    <button pButton type="button" label="Delete" icon="pi pi-check" class="p-button-danger"   (mouseover)="hovDelete=true" (mouseleave)="hovDelete=false" [ngStyle]="{color: hovDelete==true  ? 'white' : 'black' }" (click)="onDelete(item)"></button>
+                    <button pButton type="button" label="View Enseignants" icon="pi pi-check" class="p-button-warning"  (mouseover)="hoveView=true" (mouseleave)="hoveView=false" [ngStyle]="{color: hoveView==true  ? 'white' : 'black' }" (click)="onOpen(item)"></button>
+
+                  </td>
+                </tr>
+              </ng-template>
+          </p-table>
+
+   <p-dialog header=" Edit Department" [(visible)]="displayDep" [style]="{width: '50vw'}" [baseZIndex]="10000">
+    <div class="form-group">
+      <label for="exampleFormControlInput1">Department Name</label>
+      <input  type="text" class="form-control" id="exampleFormControlInput1" [(ngModel)]="dep.nomDepart" placeholder="department Name">
+    </div>
+      <ng-template pTemplate="footer">
+          <p-button icon="pi pi-check" (click)="addDepartment()" label="Save" styleClass="p-button-text"></p-button>
+      </ng-template>
+  </p-dialog>
+
+  <p-dialog header=" Edit Department" [(visible)]="displayBasic" [style]="{width: '50vw'}" [baseZIndex]="10000">
+    <div class="form-group">
+      <label for="exampleFormControlInput1">Department Name</label>
+      <input  type="text" class="form-control" id="exampleFormControlInput1" [(ngModel)]="dep.nomDepart" placeholder="department Name">
+    </div>
+      <ng-template pTemplate="footer">
+          <p-button icon="pi pi-check" (click)="updateDepartment(dep)" label="Update" styleClass="p-button-text"></p-button>
+      </ng-template>
+  </p-dialog>
+
+
+  <p-dialog header=" List Enseignant" [(visible)]="displayBasic1" [style]="{width: '50vw'}" [baseZIndex]="10000">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Enseignant id</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">CIN</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let item of listEnseignant">
+          <td>{{item.idEnseignant }}</td>
+          <td>{{item.nomEnseignant }}</td>
+          <td>{{item.prenomEnseignant }}</td>
+          <td>{{item.cin }}</td>
+        </tr>
+
+      </tbody>
+    </table>
+      <ng-template pTemplate="footer">
+          <p-button icon="pi pi-check" (click)="cancel()" label="Cancel" styleClass="p-button-text"></p-button>
+      </ng-template>
+  </p-dialog>
+</div>
+<!--
+  <ng-template #mymodal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Bootstrap Modal</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      This is example from ItSolutionStuff.com
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+    </div>
+  </ng-template>
+  -->

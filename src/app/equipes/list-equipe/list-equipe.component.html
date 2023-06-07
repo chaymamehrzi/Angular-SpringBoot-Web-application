@@ -1,0 +1,60 @@
+
+<!--
+<body>
+    <br><br>
+    <div class="search">
+    <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="search">
+  </div>
+<div class="container">
+    <h1>Clubs</h1>
+    <br>
+<div class="row">
+
+<div class="col" *ngFor="let i of listE | filter:searchText">
+<div >
+  -->
+    <div class="card-body" style="padding: 20%;" >
+        <div
+        class="bg-image hover-overlay ripple shadow-1-strong rounded"
+        data-mdb-ripple-color="light">
+      <img [routerLink]="['/equipes/update',equipe.idEquipe]" src="{{equipe.logo}}"width = "50" height = "50" alt="logo">
+      <a >
+        <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
+      </a>
+    </div>
+    <i class="bi bi-heart-fill"></i>  
+     <h4 class="card-text">{{equipe.nomEquipe}}<br><h6>({{equipe.niveau}})</h6></h4> 
+     <div *ngIf="equipe.fav==0">
+     <button class="btn btn-sm" (click)="notifyParent(1)" >
+      <span class="material-icons">favorite_border</span>
+    </button>
+      </div>
+     <div  *ngIf="equipe.fav==1" >
+     <button class="btn btn-sm" (click)="notifyParent(2)" >
+     <mat-icon>favorite</mat-icon>
+     </button>
+</div>
+    </div>
+  <!-- 
+
+  </div>
+</div>
+</div>
+</div>
+<div
+  class="bg-image hover-overlay ripple shadow-1-strong rounded"
+  data-mdb-ripple-color="light"
+><br><br><br><br>
+ 
+  <div class="container2">
+    <img src="https://wallpaper.dog/large/5458515.jpg" class="w-100" alt="ucl" />
+    <div class="centered">
+    <h1>Add a new club</h1>
+    <h3>Click here</h3>
+    <a routerLink="/equipes/add" class="btn btn-outline-light btn-lg" >New club</a>
+  </div>
+</div>
+
+</div>
+</body>
+  -->

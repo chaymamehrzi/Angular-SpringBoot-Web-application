@@ -1,0 +1,22 @@
+
+
+
+
+<form #f="ngForm" class="container" style="padding: 20%;" >
+  <div class="form-group ">
+    <div>
+      <select [(ngModel)]="depUniv.iddep" name="idDep">
+        <option [value]="null"></option>
+        <option *ngFor="let listuniversite of listuniversite" [value]="listuniversite?.idUniv">{{listuniversite.nomUniv}}</option>
+      </select>
+      <select [(ngModel)]="depUniv.iduniv" name="idUniv">
+        <option [value]="null"></option>
+        <option *ngFor="let listDepartments of listDepartments" [value]="listDepartments?.idDepart">{{listDepartments.nomDepart}}</option>
+      </select>
+  <div class="form-group">
+    <button class=" btn btn-outline-primary"style="margin:5px" type=" submit" style="margin-top:4%"     [disabled]="f.invalid"   (click)="saveDep()" >save dep</button>
+  </div>
+    </div>
+  </div>
+</form>
+

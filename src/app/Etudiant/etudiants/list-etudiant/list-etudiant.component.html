@@ -1,0 +1,21 @@
+<div class="container " style=" padding-left: 50px;  padding-top:70px;padding-right: 50px;">
+
+<div class="row col-md-8" style="display: block;margin-left: 30%; margin-top: -18%;" >
+  
+  <button  class="btn btn-outline-primary" [hidden] *ngIf="role=='ADMIN'" [routerLink]="['/etudiants/add'] ">new Student</button>
+
+  <button  class=" btn btn-outline-warning " [hidden] *ngIf="role=='ADMIN'"  style="margin-top: 15px;"  (click)="openDialog()"  >Statistic Age </button>
+  
+  <input type="search"  style =" margin-top: 15px;" class="form-control rounded" [hidden] *ngIf="role=='ADMIN'"  placeholder="Search" name="search" [(ngModel)]="searchText"  aria-label="Search" aria-describedby="search-addon" autocomplete="on" />
+
+</div>
+
+<div class="container col  " style="margin-top:20px;"  
+  *ngFor=" let item of listetudiants |  filter:searchText ; let i=index" >
+<app-item-etudiant  [etudiant]="item" (deleteEtudiant)="DeleteEtudiant(item)"></app-item-etudiant>
+
+</div>
+
+</div>
+
+

@@ -1,0 +1,41 @@
+<div class="container "  style="padding-right:50px ;padding-left: 50px;padding-bottom:50px ;">
+
+  <div class="example-header expanded">
+    <mat-form-field>
+      <input matInput  placeholder="Filter" (keyup)="applyFilter($event)" placeholder="search" #input>
+    </mat-form-field>
+  </div>
+  
+  <div class="example-container mat-elevation-z8">
+    
+      <table mat-table [dataSource]="dataSource" matsort>
+
+          <ng-container matColumnDef="nomEquipe">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> nomEquipe </th>
+              <td mat-cell *matCellDef="let row"> {{row.nomEquipe}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="niveau">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> niveau </th>
+              <td mat-cell *matCellDef="let row"> {{row.niveau}} </td>
+          </ng-container>
+      
+            <ng-container matColumnDef="fav">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> favoris  </th>
+              <td mat-cell *matCellDef="let row"> {{row.fav}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="logo">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> logo </th>
+            <td  mat-cell *matCellDef="let row"> <img  style="width: 100px;"src={{row.logo}}></td>
+        </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+         
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[5,10,15,20]" aria-label="Select page des Equipes">
+      </mat-paginator>
+</div>

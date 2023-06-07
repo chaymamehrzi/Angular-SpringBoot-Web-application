@@ -1,0 +1,21 @@
+body {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: beige;
+    font: 5vmin "Arial", sans-serif;
+    
+  }
+  
+  .ageUnder20 {
+    margin: 30vmin 0 0 60vmin;
+    font-size: 20px;
+    color:black;
+
+  }
+  .ageabove20 {
+    font-size: 20px;
+    margin: 2vmin;
+    color: black;
+  }
+

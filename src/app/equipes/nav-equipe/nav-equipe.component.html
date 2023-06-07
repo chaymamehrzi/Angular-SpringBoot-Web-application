@@ -1,0 +1,56 @@
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width: 200%;">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink="/equipes">Equipes</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/equipes/stat">Stats</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/equipes/favorites">My favorites</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/equipes/stade">New Stade</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/equipes/listStatds">List stades</a>
+          </li>
+          <li class="nav-item">
+            <input type="text" name="p" [(ngModel)]="nomEquipeX" class="form-control" placeholder="search by equipe">
+          </li>
+        </ul>
+      </div>
+    </div>
+    </nav> 
+
+  <body>
+
+    <div
+    class="bg-image hover-overlay ripple shadow-1-strong rounded"
+    data-mdb-ripple-color="light">
+   
+    <div class="container2" style="background-color: rgb(238, 238, 255);">
+      <br>
+      <h1>Add a new club</h1>
+      <h3>Click here</h3>
+      <a routerLink="/equipes/add"  class="btn btn-outline-dark btn-lg" >New club</a>
+      <br><br>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3" *ngFor="let p of listE| filter:searchText">
+   <!-- <app-product [product]="p"  (notification)="incrementLike($event)">
+    </app-product>  -->
+    <ul  *ngIf="p.nomEquipe.includes(nomEquipeX) || nomEquipeX==null"  @list class="list" (@list.start)="enabled=false" (@list.done)="enabled=true">
+    <app-list-equipe @items [a]="p" [equipe]="p"  (notification)="fav($event,p)"></app-list-equipe>
+  </ul>
+
+</div>
+</div>
+
+
+</body>

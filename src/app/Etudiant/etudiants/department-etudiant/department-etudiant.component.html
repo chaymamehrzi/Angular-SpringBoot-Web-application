@@ -1,0 +1,29 @@
+<div class="container " style="padding:50px">
+<button mat-button type="button"  class="btn btn-outline-warning" style="margin-bottom:10px ;" [hidden] *ngIf="role=='ADMIN'" [routerLink]="['/etudiants/listdep',id]" >Add student to department</button>
+
+<div class="container"  >
+    <table  class="table"  >
+        <thead class="thead-dark">
+
+          <tr>
+            <th scope="col">ID Department</th>
+            <th scope="col">nom Department</th>
+            <th scope="col" *ngIf="etudiant.departement.idDepart"> Action </th>
+          </tr>
+        </thead>
+        <tbody  >
+          <tr >
+            <td>{{etudiant.departement.idDepart}}</td>
+            <td>{{etudiant.departement.nomDepart}}</td>
+             
+            <td *ngIf="etudiant.departement.idDepart"><button mat-button type="button" class="btn btn-outline-primary" [routerLink]="['/etudiants/listetudiantbydepartment',etudiant.departement.idDepart]" >others students in this department:{{etudiant.departement.nomDepart}} </button></td>
+
+          </tr>
+        </tbody>
+        
+      </table>
+
+    </div>
+
+</div>
+

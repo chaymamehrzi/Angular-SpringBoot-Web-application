@@ -1,0 +1,9 @@
+
+
+<pre>{{univjson.idUniv}}</pre>
+<pre>{{univjson.nomUniv}}</pre>
+<pre><img src="{{univjson.imageUniv}}" width='50' height="50"> </pre>
+<pre *ngFor="let item of univjson?.departments ">
+  {{item.nomDepart}}<br>
+</pre>
+<button (click)="back()" class="btn btn-dark">back</button>

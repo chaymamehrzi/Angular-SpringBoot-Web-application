@@ -1,0 +1,14 @@
+<form>
+<ul>
+    <li>
+      <mat-form-field>
+        <input matInput  placeholder="choose age " [(ngModel)]="critereage" >
+      </mat-form-field>
+    </li>
+    <li>
+      <button mat-raised-button  [routerLink]="['/etudiants/statistics',critereage]" > Get statistics </button>
+
+    </li>
+   
+  </ul>
+</form>

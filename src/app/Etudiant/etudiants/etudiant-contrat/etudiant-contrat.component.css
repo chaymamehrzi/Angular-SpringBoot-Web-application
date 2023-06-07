@@ -1,0 +1,15 @@
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+    color: brown;
+  }
+.example-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+  }
+  
+  .mat-table {
+    overflow: auto;
+    max-height: 500px;
+  }

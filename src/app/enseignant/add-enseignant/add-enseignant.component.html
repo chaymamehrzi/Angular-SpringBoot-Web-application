@@ -1,0 +1,26 @@
+<br><br><br><br><br>
+<h1>Add  Enseignant</h1>
+<form>
+    <div class="form-group">
+      <label for="exampleFormControlInput1">First Name</label>
+      <input  type="text" class="form-control" id="exampleFormControlInput1" [(ngModel)]="enseignant.nomEnseignant"  placeholder="First Name">
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Last Name</label>
+        <input  type="text" class="form-control" id="exampleFormControlInput1" [(ngModel)]="enseignant.prenomEnseignant"  placeholder="Last Name">
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">CIN</label>
+        <input  type="text" class="form-control" id="exampleFormControlInput1" [(ngModel)]="enseignant.cin"  placeholder="cin">
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Select Department</label>
+      <select class="form-select" aria-label="Default select example"  [(ngModel)]="enseignant.departement">
+        <option *ngFor="let d of departments"   [ngValue]="d">{{d.nomDepart}}</option>
+      </select>
+    </div>
+    <br><br><br>
+    <button type="button" (click)="onSubmit()" class="btn btn-primary mb-2">Add Enseignant</button>
+
+
+  </form>

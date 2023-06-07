@@ -1,0 +1,53 @@
+<form>
+  <div class="form-group" [formGroup]="universite">
+
+    <div class="form-group col-md-6">
+      <label>Nom Universite</label>
+      <input formControlName="nomUniv"
+             type="text" name="nomUniv"
+             class="form-control"
+
+      >
+      <div class="alert alert-danger" *ngIf="error">
+        this field is required
+      </div>
+    </div>
+
+
+    <div class="form-group col-md-6">
+      <label>Image</label>
+
+<!--
+      <input type="file"  class="form-control" [(ngModel)]="Univ.imageUniv" src="url" style="margin-top: 4%;"   (change)="onFileChange($event)"  name="imageUniv" id="customFile" />
+-->
+
+      <input formControlName="imageUniv"
+            type="text" src="url"
+             name="imageUniv" class="form-control"
+
+             >
+
+     <!-- <input formControlName="imageUniv"
+             type="file"
+             name="imageUniv" class="form-control"
+
+             (change)="onFileChange($event)"
+      >-->
+
+
+     <!-- <input type='file' (change)="readUrl($event)">
+      <img [src]="url">-->
+
+
+      <div class="alert alert-danger" *ngIf="error">
+        this field is required
+      </div>
+    </div>
+
+    <button (click)="addUniversities()"> Ajouter </button>
+
+    <div>
+    </div>
+
+  </div>
+</form>

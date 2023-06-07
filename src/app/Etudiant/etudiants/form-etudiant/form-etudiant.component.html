@@ -1,0 +1,111 @@
+
+
+
+
+<form #f="ngForm" class="container container-fluid" >
+    <p>{{action}} Etudiant</p>
+    <div class="form-group ">
+        <div>
+            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Nom * </label>
+            <input type="text" class="form-control form-control-sm" [(ngModel)]="etudiant.nomE"  name="nomE" id="colFormLabelSm" placeholder="" required minlength="3"
+            pattern="[A-Za-z]{3,12}$" #n="ngModel">
+
+            <div *ngIf="n.invalid && n.touched" style="margin-top: 10px;" class="alert alert-danger" >
+                <div *ngIf="n.hasError('required')">
+                   this field is required
+                  </div>
+                <div *ngIf="n.hasError('minlength') ">
+                   minlength = 3!
+                </div>
+                <div *ngIf="n.hasError('pattern') && !n.hasError('minlength')">
+                  error pattern
+               </div>
+               <div   *ngIf=" !n.touched && n.valid"  class="alert alert-success" role="alert">
+                success 
+                  </div>
+            </div>  
+        </div>
+    </div>
+    <div class="form-group">
+        <div>
+            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Prenom *</label>
+            <input type="text" class="form-control form-control-sm" [(ngModel)]="etudiant.prenomE" name="prenomE" id="colFormLabelSm" placeholder="" required minlength="3" pattern="[A-Za-z]{3,12}$" #p="ngModel">
+            <div   *ngIf="p.invalid && p.touched" style="margin-top: 10px;"  class=" alert alert-danger" >
+                <mat-error *ngIf="p.hasError('required')">
+                    this field is required
+                </mat-error>
+                 <div *ngIf="p.hasError('minlength')">
+                    minlength = 3!
+                 </div>
+                 <div *ngIf="p.hasError('pattern') && !n.hasError('minlength')">
+                   error pattern
+                </div>
+                <div  *ngIf="!p.touched && p.valid" class="alert alert-success" role="alert">
+                  success 
+                    </div>
+            </div>
+        </div>
+    </div>
+   
+    <mat-form-field style="  margin-top: 5px; width:20%; height: min-content;" class="example-min-width" appearance="outline" >
+      <mat-label>choose a date</mat-label>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="etudiant.date_naissance" name="date_naissance" id="colFormLabelSm" placeholder="" required  minlength="10" maxlength="10" #da="ngModel">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker" style="display: flex; justify-content: end;">
+        <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+      </mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <div style="padding-top: 10%;" class="form-group">
+        <div>
+          <div class="alert alert-danger" *ngIf="da.invalid && da.touched">
+           <div *ngIf="da.hasError('required')">
+              you must pick you birth day
+             </div>
+             
+             <div *ngIf="da.hasError('minlength')|| da.hasError('maxlength')">
+                longeur de date must be 10 !
+             </div>
+           </div>
+           <div   *ngIf="!da.invalid && !da.touched " class="alert alert-success" role="alert">
+              success 
+                </div>
+          </div>
+         </div>
+    </mat-form-field>
+   
+   
+    <div class="form-group">
+
+        <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">option</label>
+
+        <mat-form-field>
+          <mat-select placeholder="choose an option"  #s="ngModel" required    [(ngModel)]="etudiant.option" name="option">
+            <mat-option *ngFor="let o of options" [value]="o.value">
+              {{ o.viewValue }}
+            </mat-option>
+          </mat-select>
+       
+        </mat-form-field>
+        <div  *ngIf="s.invalid && s.touched" style="margin-top:10px ;">
+          <div  class="alert alert-danger"  *ngIf="s.invalid && s.touched">
+            <div *ngIf="s.hasError('required')">
+                you must pick one of this option 
+            </div>
+          </div>
+          <div   *ngIf="!s.invalid  " class="alert alert-success" role="alert">
+            success 
+              </div>
+        </div>
+   
+    
+    </div>
+      
+    <div class="form-group"> 
+        <input type="file"  class="form-control" [(ngModel)]="etudiant.picture" src="url" style="margin-top:10px;"   (change)="onFileChange($event)"  name="picture" id="customFile" />
+        </div>
+    <div class="form-group" style="display: flex; justify-content: center" >
+        <button mat-button  type=" submit" style="margin-top:10px; "     [disabled]="f.invalid"   (click)="saveEtudiant()" >{{action}}</button>
+    </div>
+  
+</form>
+

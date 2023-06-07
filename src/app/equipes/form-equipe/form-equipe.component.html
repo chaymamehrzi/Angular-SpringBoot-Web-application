@@ -1,0 +1,133 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="width: 200%;">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/equipes">Equipes</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/equipes/stat">Stats</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/equipes/favorites">My favorites</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/equipes/stade">New Stade</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/equipes/listStatds">List stades</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  </nav> 
+<body>
+   
+  <div class="container">
+    
+  <div class="row">
+   
+  <div class="col" *ngIf="action!='add'"><br><br><img src="{{equipe.logo}}"width = "50" height = "50" alt="logo">&ensp;{{equipe.nomEquipe}}</div>
+
+    <div class="col">
+      <br><br>
+      <h1>{{action}} Equipe</h1>
+      <form #f="ngForm">
+       <div class="form-group col-md-6">
+          <label>Name:*</label>
+          <input  type="text" name="name" [(ngModel)]="equipe.nomEquipe"
+          class="form-control" required minlength="3"
+           pattern="[A-Za-z]{3,12}$" #n="ngModel">
+          <div class="alert alert-danger" *ngIf="n.invalid && n.touched">
+              <div *ngIf="n.hasError('required')">
+                 this field is required
+                </div>
+              <div *ngIf="n.hasError('minlength')">
+                 minlength = 3 !
+              </div>
+              <div *ngIf="n.hasError('pattern')">
+                error pattern
+             </div>
+          </div>
+       </div>
+        <div class="form-group col-md-6">
+          <label>Level</label>
+     
+
+
+          <select [(ngModel)]="equipe.niveau" name="category" class="form-control" required>
+            <option value="JUNIOR">JUNIOR</option>
+            <option value="SINIOR">SINIOR</option>
+            <option value="EXPERT">EXPERT</option>
+          </select>
+        </div>
+        <div class="form-group col-md-6">
+          <label>Logo</label>
+          <input [(ngModel)]="equipe.logo"
+          type="text" name="description"
+          class="form-control" required #d="ngModel">
+          <div class="alert alert-danger" *ngIf="d.invalid && d.touched">
+            this field is required
+          </div>
+        </div>
+        <br>
+        
+          <div class="container2">
+        <button (click)="saveEquipe()"
+        class="btn btn-outline-dark btn-lg"
+         [disabled]="f.invalid" >
+          {{action}}
+        </button> 
+      <button  (click)="deleteEquipe()" type="button" class="btn btn-danger btn-lg"> Delete</button>
+    </div>
+
+      
+      </form>
+    </div>
+    <div class="row" style="position:relative; top:-250px;">
+      <div class="col">
+
+        <h5 [ngStyle]="{'font-size.px':13}" [style.color]="'white'">
+           <p [ngClass]="{ 'text-success':equipe.niveau === 'JUNIOR',
+          'text-primary':equipe.niveau === 'SENIOR',
+          'text-danger':equipe.niveau === 'EXPERT'
+          }">  {{equipe.niveau}}    </p>
+        </h5>
+      </div>
+      </div>
+  </div>
+</div>
+<div class="container">
+  <h2>Students playing in {{equipe.nomEquipe}}</h2><select type="text" [(ngModel)]="selectedLevel">
+    <option *ngFor="let i of listSS" [ngValue]="i">{{i.nomE}}</option>
+  </select>  
+  <button class="btn btn-small btn-dark" (click)="afffect()">affecte</button>
+</div>
+
+<div class="container">
+  <div class="row" style="background-color: rgb(238, 238, 255); left: 20px;">
+    <div class="col" *ngFor="let i of listS">
+    <div >
+        <div class="card-body"  >
+            <div
+            class="bg-image hover-overlay ripple shadow-1-strong rounded"
+            data-mdb-ripple-color="light">
+          <img src="" alt="">
+          <a >
+            <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
+          </a>
+        </div>
+        <mat-icon> person_pin</mat-icon>
+
+    
+         <h4 class="card-text">{{i.prenomE}}<br><h4>{{i.nomE}}</h4></h4> 
+        </div>
+      </div>
+    </div>
+    </div>    
+</div>
+
+
+    </body>
+    

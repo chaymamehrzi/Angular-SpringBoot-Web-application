@@ -1,0 +1,34 @@
+<div class="container container-fluid" style="padding: 20px; ">
+
+<nav    [hidden] *ngIf="result==etudiant.idEtudiant || result=='ADMIN'" >
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <a class="nav-etudiant nav-link active" style="color:rgb(2, 67, 54);font-size: large;" id="nav-equipes-tab" data-toggle="tab" [routerLink]="['/etudiants/etudiantequipes',etudiant.idEtudiant]" role="tab" aria-controls="nav-home" aria-selected="true"> Etudiant Equipes</a>
+      <a class="nav-etudiant nav-link " style="color:rgb(2, 67, 54);font-size: large;" id="nav-contrats-tab" data-toggle="tab" [routerLink]="['/etudiants/etudiant-contrat',etudiant.idEtudiant]" role="tab" aria-controls="nav-profile" aria-selected="false">Etudiant contrats</a>
+      <a class="nav-etudiant nav-link " style="color:rgb(2, 67, 54);font-size: large;" id="nav-contrats-tab" data-toggle="tab" [routerLink]="['/etudiants/department-etudiant',etudiant.idEtudiant]" role="tab" aria-controls="nav-profile" aria-selected="false">Etudiant Department</a>
+
+    </div>
+
+    <div class="col-md-12">
+      <div class="profile-card text-center">
+    
+        <img class="img-responsive" src="https://images.unsplash.com/photo-1447877085163-3cce903855cd?crop=entropy&amp;fit=crop&amp;fm=jpg&amp;h=700&amp;ixjsv=2.1.0&amp;ixlib=rb-0.3.5&amp;q=80&amp;w=1925">
+        <div class="profile-info">
+    
+          <img class="profile-pic" src={{etudiant.picture}}>
+          <button type="button" style="margin:5px"  [routerLink]="['/etudiants/update/',etudiant.idEtudiant]" class="btn btn-warning">Update</button>
+          <button type="button" style="margin:5px"   [hidden]="role=='STUDENT'" (click)="delete()"  class="btn btn-danger" >Delete</button>
+     
+          <app-detail-etudiant [etudiant1]="etudiant" ></app-detail-etudiant></div>
+
+         
+        </div>
+    
+      </div>
+
+
+
+</nav>
+
+
+
+</div>

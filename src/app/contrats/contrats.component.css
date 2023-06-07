@@ -1,0 +1,38 @@
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+
+mat-toolbar {
+    position: fixed;
+    top: 85px;
+    left: 235px;
+    width: 87%;
+    height: 50px;
+
+
+}
+
+table {
+    width: 100%;
+}
+
+.mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+
+td,
+th {
+    width: 25%;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0px;
+}
+
+/*
+mat-grid-tile {
+    background: red;
+}*/

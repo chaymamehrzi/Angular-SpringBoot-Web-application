@@ -1,0 +1,42 @@
+.table  {
+  width: 700px;
+  height: 500px;
+  border: 1px solid rgba(17, 17, 17, 0.5);
+  background-color: #edf0f5;
+}
+.table1  {
+  width: 700px;
+  height: 500px;
+  border: 1px solid rgba(63, 63, 63, 0.5);
+  background-color: #39a2a2;
+}
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.btn-success{
+  position: relative;
+  left: 300px;
+}
+
+.search-hero {
+  max-width: 500px;
+  padding-bottom: 50px;
+  margin:auto;
+  position: relative;
+  right: 300px;
+}
+
+.addButton{
+  position: relative;
+  left: 300px;
+
+}
+

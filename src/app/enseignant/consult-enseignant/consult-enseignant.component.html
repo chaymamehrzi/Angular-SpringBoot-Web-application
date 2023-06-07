@@ -1,0 +1,111 @@
+
+<br><br><br><br><br>
+<h1> List Enseignants</h1>
+<p-table #dt [value]="listEnseignants" dataKey="id" styleClass="p-datatable-customers" [rowHover]="true"
+            [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]"   [loading]="loading"
+            [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+            [filterDelay]="0" [globalFilterFields]="['idEnseignant','nomEnseignant','prenomEnseignant','cin','departement.nomDepart']">
+            <ng-template pTemplate="caption">
+                <div class="table-header">
+                    <span class="p-input-icon-right">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text"  (input)="applyFilterGlobal($event, 'contains')"  placeholder="Global Search" />
+                    </span>
+                    <span class="p-input-right">
+                    <button pButton style="float: right;" type="button" label="Add" icon="pi pi-check" class="p-button-primary"
+                    (click)="openEnseignant()"></button>
+                  </span>
+                </div>
+
+            </ng-template>
+            <ng-template pTemplate="header">
+              <tr>
+                <th scope="col" pSortableColumn="id">Enseignant id <p-sortIcon field="id"></p-sortIcon></th>
+                <th scope="col" pSortableColumn="firstname">First Name <p-sortIcon field="firstname"></p-sortIcon></th>
+                <th scope="col" pSortableColumn="lasttname">Last Name <p-sortIcon field="lasttname"></p-sortIcon></th>
+                <th scope="col" pSortableColumn="cin">CIN<p-sortIcon field="cin"></p-sortIcon></th>
+                <th scope="col" pSortableColumn="departement">Department <p-sortIcon field="departement"></p-sortIcon></th>
+                <th scope="col" pSortableColumn="action">Actions<p-sortIcon field="action"></p-sortIcon></th>
+              </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-item>
+                <tr>
+                  <td>{{item.idEnseignant }}</td>
+                  <td>{{item.nomEnseignant }}</td>
+                  <td>{{item.prenomEnseignant }}</td>
+                  <td>{{item.cin }}</td>
+                  <td>{{item.departement.nomDepart }}</td>
+                  <td>
+                    <button pButton type="button" label="Edit" icon="pi pi-check" class="p-button-primary"  (mouseover)="hoveEdit=true" (mouseleave)="hoveEdit=false" [ngStyle]="{color: hoveEdit==true  ? 'white' : 'black' }" (click)="showBasicDialog(item)"></button>
+                    <button pButton type="button" label="Delete" icon="pi pi-check" class="p-button-danger"   (mouseover)="hovDelete=true" (mouseleave)="hovDelete=false" [ngStyle]="{color: hovDelete==true  ? 'white' : 'black' }" (click)="onDelete(item)"></button>
+                </td>
+                </tr>
+              </ng-template>
+          </p-table>
+
+
+
+  <p-dialog header=" Edit Enseignant" [(visible)]="displayBasic" [style]="{width: '50vw'}" [baseZIndex]="10000">
+    <div class="form-group">
+      <label for="exampleFormControlInput1">First Name</label>
+      <input  type="text" class="form-control" id="exampleFormControlInput1" [(ngModel)]="ens.nomEnseignant" placeholder="First Name">
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Last Name</label>
+        <input  type="text" class="form-control" id="exampleFormControlInput1" [(ngModel)]="ens.prenomEnseignant" placeholder="Last Name">
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">CIN</label>
+        <input  type="text" class="form-control" id="exampleFormControlInput1" [(ngModel)]="ens.cin" placeholder="cin">
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Select Department</label>
+      <select class="form-select" aria-label="Default select example"  [(ngModel)]="ens.departement">
+        <option *ngFor="let d of departments"   [ngValue]="d">{{d.nomDepart}}</option>
+      </select>
+    </div>
+      <ng-template pTemplate="footer">
+          <p-button icon="pi pi-check" (click)="updateEnseignant(ens)" label="Update" styleClass="p-button-text"></p-button>
+      </ng-template>
+  </p-dialog>
+
+
+  <p-dialog header=" Edit Enseignant" [(visible)]="displayAddEns" [style]="{width: '50vw'}" [baseZIndex]="10000">
+    <div class="form-group">
+      <label for="exampleFormControlInput1">First Name</label>
+      <input  type="text" class="form-control" id="exampleFormControlInput1" [(ngModel)]="ens.nomEnseignant" placeholder="First Name">
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Last Name</label>
+        <input  type="text" class="form-control" id="exampleFormControlInput1" [(ngModel)]="ens.prenomEnseignant" placeholder="Last Name">
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">CIN</label>
+        <input  type="text" class="form-control" id="exampleFormControlInput1" [(ngModel)]="ens.cin" placeholder="cin">
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Select Department</label>
+      <select class="form-select" aria-label="Default select example"  [(ngModel)]="ens.departement">
+        <option *ngFor="let d of departments"   [ngValue]="d">{{d.nomDepart}}</option>
+      </select>
+    </div>
+      <ng-template pTemplate="footer">
+          <p-button icon="pi pi-check" (click)="addEnseignant(ens)" label="Save" styleClass="p-button-text"></p-button>
+      </ng-template>
+  </p-dialog>
+<!--
+  <ng-template #mymodal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Bootstrap Modal</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      This is example from ItSolutionStuff.com
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+    </div>
+  </ng-template>
+  -->

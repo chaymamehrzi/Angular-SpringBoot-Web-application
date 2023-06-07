@@ -1,0 +1,21 @@
+<mat-card class="example-card element">
+    <mat-card-header>
+        <div mat-card-avatar class="example-header-image img">
+            <img mat-card-image src={{card.picture}}
+                alt="Photo of a Student">
+        </div>
+        <mat-card-title>{{card.nomE}} {{card.prenomE}}</mat-card-title>
+        <mat-card-subtitle>{{card.date_naissance}}</mat-card-subtitle>
+        {{card.option}}
+    </mat-card-header>
+
+    <mat-card-content>
+        <p>
+
+        </p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button color="warn" (click)="getcardid(card.idEtudiant)">Select</button>
+    </mat-card-actions>
+
+</mat-card>
